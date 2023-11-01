@@ -15,6 +15,8 @@ var speed
 
 var mousepos = Vector2()
 
+print("lol")
+
 func _input(event):
 	if event is InputEventMouse:
 		mousepos = event.position
