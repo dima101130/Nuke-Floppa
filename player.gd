@@ -15,23 +15,22 @@ var speed
 
 var mousepos = Vector2()
 
-func _input(event):
-	if event is InputEventMouse:
-		mousepos = event.position
-	if Input.is_action_just_pressed("debug_get_pos3d"):
-		var worldspace = get_world_3d().direct_space_state
-		var start = cam.project_ray_origin(mousepos)
-		var end = cam.project_position(mousepos,1000)
-		var query = PhysicsRayQueryParameters3D.create(start, end)
-		query.collide_with_areas = true
-		var result = worldspace.intersect_ray(query)
-		print(result)
-
 func _ready():
 	pass
 
 
 func _physics_process(delta):
+	var mousepos = get_viewport().get_mouse_position()
+	
+	var worldspace = get_world_3d().direct_space_state
+	var start = cam.project_ray_origin(mousepos)
+	var end = cam.project_position(mousepos,1000)
+	var query = PhysicsRayQueryParameters3D.create(start, end)
+	query.collide_with_areas = true
+	var result = worldspace.intersect_ray(query)
+	if result:
+		print(result.position)
+	
 	# Horizontal movement
 	var horizontal_input := Vector3.ZERO
 	horizontal_input.z = Input.get_axis("forward", "backward")
