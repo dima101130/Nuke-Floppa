@@ -1,6 +1,8 @@
 extends CharacterBody3D
 
 @onready var cam = $Head/Camera3D
+@onready var body = $Body
+@onready var gun = $Body/Gun
 
 #movment
 @export var walk_speed := 6.0
@@ -30,6 +32,7 @@ func _physics_process(delta):
 	var result = worldspace.intersect_ray(query)
 	if result:
 		print(result.position)
+		body.look_at(Vector3(result.position.x,global_transform.origin.y,result.position.z))
 	
 	# Horizontal movement
 	var horizontal_input := Vector3.ZERO
