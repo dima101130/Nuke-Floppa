@@ -1,4 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://dtf7bjfs1hpxi"]
+[gd_scene load_steps=5 format=3 uid="uid://c5l7odlwfb33u"]
+
+[ext_resource type="PackedScene" uid="uid://dkpff7fiahu1h" path="res://player.tscn" id="1_ybutk"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_tgvpk"]
 
@@ -30,3 +32,6 @@ size = Vector3(108.053, 1.46143, 97.2222)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.73433, 43.2228, 50.2881)
+
+[node name="Player" parent="." instance=ExtResource("1_ybutk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.28459, 0)
