@@ -1,5 +1,7 @@
 extends CharacterBody3D
 
+@onready var cam = $Head/Camera3D
+
 #movment
 @export var walk_speed := 6.0
 @export var sprint_speed := 10.0
@@ -11,6 +13,19 @@ extends CharacterBody3D
 
 var speed
 
+var mousepos = Vector2()
+
+func _input(event):
+	if event is InputEventMouse:
+		mousepos = event.position
+	if Input.is_action_just_pressed("debug_get_pos3d"):
+		var worldspace = get_world_3d().direct_space_state
+		var start = cam.project_ray_origin(mousepos)
+		var end = cam.project_position(mousepos,1000)
+		var query = PhysicsRayQueryParameters3D.create(start, end)
+		query.collide_with_areas = true
+		var result = worldspace.intersect_ray(query)
+		print(result)
 
 func _ready():
 	pass
