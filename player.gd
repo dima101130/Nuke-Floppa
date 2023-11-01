@@ -31,7 +31,6 @@ func _physics_process(delta):
 	query.collide_with_areas = true
 	var result = worldspace.intersect_ray(query)
 	if result:
-		print(result.position)
 		body.look_at(Vector3(result.position.x,global_transform.origin.y,result.position.z))
 	
 	# Horizontal movement
