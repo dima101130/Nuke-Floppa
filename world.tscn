@@ -30,8 +30,5 @@ size = Vector3(108.053, 1.46143, 50.42)
 use_collision = true
 size = Vector3(108.053, 1.46143, 97.2222)
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.73433, 43.2228, 50.2881)
-
 [node name="Player" parent="." instance=ExtResource("1_ybutk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.28459, 0)
