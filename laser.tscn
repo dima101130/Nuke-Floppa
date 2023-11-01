@@ -4,13 +4,13 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eq36u"]
 transparency = 1
-albedo_color = Color(1, 0, 0, 0.137255)
+albedo_color = Color(1, 0, 0, 0.396078)
 
 [node name="Laser" type="RayCast3D"]
 target_position = Vector3(0, -100, 0)
 script = ExtResource("1_s7iso")
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
-radius = 0.05
+radius = 0.03
 height = 1.0
 material = SubResource("StandardMaterial3D_eq36u")
