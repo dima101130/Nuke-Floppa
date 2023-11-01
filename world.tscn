@@ -63,3 +63,6 @@ mesh = SubResource("BoxMesh_olsjn")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D3"]
 shape = SubResource("BoxShape3D_qvp0y")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.526036, 0.850462, 0, -0.850462, 0.526036, 1.75331, 11.2899, 13.9213)
