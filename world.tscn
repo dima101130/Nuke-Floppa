@@ -32,6 +32,3 @@ size = Vector3(108.053, 1.46143, 97.2222)
 
 [node name="Player" parent="." instance=ExtResource("1_ybutk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.28459, 1.04043)
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.953071, 0.302708, -0.00487712, -0.267495, 0.849531, 0.454691, 0.141782, -0.432048, 0.890636, 0, 26.3693, 0)
