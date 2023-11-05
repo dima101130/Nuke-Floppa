@@ -1,8 +1,12 @@
 extends CharacterBody3D
 
+
+@onready var bullet_prefab = preload("res://bullet.tscn")
+
 @onready var cam = $Head/Camera3D
 @onready var body = $Body
 @onready var gun = $Body/Gun
+@onready var laser = $Body/Gun/MeshInstance3D2/Laser
 
 #movment
 @export var walk_speed := 6.0
@@ -31,7 +35,8 @@ func _physics_process(delta):
 	query.collide_with_areas = true
 	var result = worldspace.intersect_ray(query)
 	if result:
-		body.look_at(Vector3(result.position.x,global_transform.origin.y,result.position.z))
+		gun.look_at(Vector3(result.position.x,result.position.y,result.position.z))
+		
 	
 	# Horizontal movement
 	var horizontal_input := Vector3.ZERO
@@ -54,6 +59,13 @@ func _physics_process(delta):
 	
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = jump_power
+	
+	if Input.is_action_just_pressed("fire"):
+		var bullet = bullet_prefab.instantiate()
+		
+		get_tree().get_root().get_child(0).add_child(bullet)
+		bullet.global_transform = $Body/Gun/MeshInstance3D2/Laser/Bullet_spawner.global_transform
+		bullet.look_at(Vector3(result.position.x,result.position.y,result.position.z))
 		
 	
 	move_and_slide()

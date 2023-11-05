@@ -23,12 +23,15 @@ skeleton = NodePath("../..")
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0.45985, 0)
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Body/Gun"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.334, 0, 0)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.14935e-08, 0, -0.26294)
 mesh = SubResource("BoxMesh_l6ke4")
 skeleton = NodePath("../..")
 
-[node name="Laser" parent="Body/Gun" instance=ExtResource("2_74jbr")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -0.398098, 0, 0)
+[node name="Laser" parent="Body/Gun/MeshInstance3D2" instance=ExtResource("2_74jbr")]
+transform = Transform3D(4.37114e-08, -1, -8.74228e-08, -1, -4.37114e-08, 0, -3.82137e-15, 8.74228e-08, -1, 0.0840886, 0, -8.96229e-16)
+
+[node name="Bullet_spawner" type="Node3D" parent="Body/Gun/MeshInstance3D2/Laser"]
+transform = Transform3D(1, -3.34075e-22, 0, -3.34075e-22, 1, 0, 0, 0, 1, 2.98023e-08, -0.930977, -8.13885e-08)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_m6clg")

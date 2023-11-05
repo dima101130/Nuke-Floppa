@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://c5l7odlwfb33u"]
+[gd_scene load_steps=8 format=3 uid="uid://c5l7odlwfb33u"]
 
 [ext_resource type="PackedScene" uid="uid://dkpff7fiahu1h" path="res://player.tscn" id="1_ybutk"]
+[ext_resource type="PackedScene" uid="uid://gkstxt0w4ifq" path="res://bullet.tscn" id="2_xshdp"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_tgvpk"]
 
@@ -37,7 +38,7 @@ size = Vector3(108.053, 1.46143, 97.2222)
 [node name="Player" parent="." instance=ExtResource("1_ybutk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.28459, 1.04043)
 
-[node name="RigidBody3D" type="RigidBody3D" parent="."]
+[node name="RigidBody3D" type="RigidBody3D" parent="." groups=["physic"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.0215, -4.9555)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
@@ -46,7 +47,7 @@ mesh = SubResource("BoxMesh_olsjn")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
 shape = SubResource("BoxShape3D_qvp0y")
 
-[node name="RigidBody3D2" type="RigidBody3D" parent="."]
+[node name="RigidBody3D2" type="RigidBody3D" parent="." groups=["physic"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.0215, -21.9478)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D2"]
@@ -55,7 +56,7 @@ mesh = SubResource("BoxMesh_olsjn")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D2"]
 shape = SubResource("BoxShape3D_qvp0y")
 
-[node name="RigidBody3D3" type="RigidBody3D" parent="."]
+[node name="RigidBody3D3" type="RigidBody3D" parent="." groups=["physic"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.681356, 10.216, -39.1202)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D3"]
@@ -66,3 +67,6 @@ shape = SubResource("BoxShape3D_qvp0y")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.526036, 0.850462, 0, -0.850462, 0.526036, 1.75331, 11.2899, 13.9213)
+
+[node name="Bullet" parent="." instance=ExtResource("2_xshdp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.89719, -1.47121)

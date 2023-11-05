@@ -8,6 +8,5 @@ func _process(delta):
 	distance = get_collision_point().distance_to(global_transform.origin)
 	# Scaler is scaling to the collision point.
 	if is_colliding():
-		print(distance)
 		$CSGCylinder3D.position.y = (distance / 2) * -1
 		$CSGCylinder3D.height = distance
