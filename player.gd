@@ -1,5 +1,9 @@
 extends CharacterBody3D
 
+@onready var cam = $Head/Camera3D
+@onready var body = $Body
+@onready var gun = $Body/Gun
+
 #movment
 @export var walk_speed := 6.0
 @export var sprint_speed := 10.0
@@ -11,12 +15,24 @@ extends CharacterBody3D
 
 var speed
 
+var mousepos = Vector2()
 
 func _ready():
 	pass
 
 
 func _physics_process(delta):
+	var mousepos = get_viewport().get_mouse_position()
+	
+	var worldspace = get_world_3d().direct_space_state
+	var start = cam.project_ray_origin(mousepos)
+	var end = cam.project_position(mousepos,1000)
+	var query = PhysicsRayQueryParameters3D.create(start, end)
+	query.collide_with_areas = true
+	var result = worldspace.intersect_ray(query)
+	if result:
+		body.look_at(Vector3(result.position.x,global_transform.origin.y,result.position.z))
+	
 	# Horizontal movement
 	var horizontal_input := Vector3.ZERO
 	horizontal_input.z = Input.get_axis("forward", "backward")
